@@ -26,7 +26,8 @@ export default function App() {
   const { setAuth } = useAuth();
   useEffect(() => {
     if (window.location.href.includes('google/success')) {
-      window.close()
+      console.log(" here, closing windows ")
+      return window.close()
     }
     let isMounted = true;
     const controller = new AbortController();
