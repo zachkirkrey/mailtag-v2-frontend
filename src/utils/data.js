@@ -1,3 +1,5 @@
+import moment from "moment";
+
 var months = [
   "January",
   "February",
@@ -15,12 +17,15 @@ var months = [
 const d = new Date();
 const getCurrentMonth = months[d.getMonth()];
 const getCurrentDay = d.getDate();
-const getTheLoopOfDates = () => {
+const getTheLoopOfDates = (start, end) => {
+  const startDate = moment(start, "DD-MM-YYYY");
+  const endDate = moment(end, "DD-MM-YYYY");
+  start = startDate.date();
+  end = endDate.date();
   let element = [];
-  for (let index = 1; index <= getCurrentDay; index++) {
+  for (let index = start; index <= end; index++) {
     element.push(index);
   }
   return element;
 };
 export { getCurrentDay, getCurrentMonth, getTheLoopOfDates };
-

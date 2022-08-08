@@ -1996,6 +1996,10 @@ th a.sort-by {
 .__react_component_tooltip.show {
   opacity: 1 !important;
 }
+#feedback-img {
+  margin-top: 15px;
+  margin-right: 5%;
+}
 .subscribe-members-button {
   padding: 11px 23px;
   border-radius: 33px;

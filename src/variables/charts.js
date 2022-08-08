@@ -134,12 +134,11 @@ const dashboardEmailStatisticsChart = {
 };
 
 const dashboardNASDAQChart = {
-  data: (canvas) => {
+  data: (start = 1, end = 31) => {
     return {
-      labels: getTheLoopOfDates().map((item) => {
+      labels: getTheLoopOfDates(start, end).map((item) => {
         return [item + " " + getCurrentMonth];
       }),
-
       datasets: [
         {
           data: [],
