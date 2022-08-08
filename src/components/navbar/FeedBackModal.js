@@ -34,7 +34,7 @@ const FeedBackModal = () => {
                   signal: controller.signal,
                   ...values,
                 });
-                console.log(response);
+
                 dispatch(fetchSuccess());
                 setSubmitting(false);
               } catch (err) {
