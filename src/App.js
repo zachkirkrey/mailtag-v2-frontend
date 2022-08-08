@@ -17,7 +17,6 @@ import config from "./config/config.json";
 import { REFRESH_TOKEN } from "constract/utilis";
 ReactGA.initialize("G-9JQYTKMY2Y");
 ReactGA.send("pageview");
-
 export default function App() {
   const dispatch = useDispatch();
   const axiosPrivate = useAxiosPrivate();
