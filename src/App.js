@@ -25,6 +25,9 @@ export default function App() {
   const location = useLocation();
   const { setAuth } = useAuth();
   useEffect(() => {
+    if (window.location.href.includes('google/success')) {
+      window.close()
+    }
     let isMounted = true;
     const controller = new AbortController();
     const getToken = async () => {
