@@ -10,6 +10,7 @@ const useFetch = (url) => {
   const [data, setData] = useState(null);
   const axiosPrivate = useAxiosPrivate();
   const dispatch = useDispatch();
+
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();

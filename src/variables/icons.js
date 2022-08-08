@@ -248,6 +248,10 @@ const icons = [
     content: "\\ea3e",
   },
   {
+    name: "nc-notification",
+    content: "\\ea3f",
+  },
+  {
     name: "nc-note-03",
     content: "\\ea3f",
   },

@@ -19,20 +19,24 @@ import config from "../../config/config.json";
 import SimpleCardGroups from "components/SimpleCardsGroup";
 import moment from "moment";
 function Dashboard() {
-  const [link, setLink] = useState(
-    `start=${moment()
-      .startOf("month")
-      .format("DD-MM-YYYY")}&end=${moment().format("DD-MM-YYYY")}`
-  );
-  useEffect(() => {}, []);
-
+  useEffect(() => {}, [selectBox]);
+  const [selectBox, setSelectBox] = useState({
+    id: "this_month",
+    label: "This Month",
+    start: moment().startOf("month").format("DD-MM-YYYY"),
+    end: moment().format("DD-MM-YYYY"),
+  });
   const [infoData] = useFetch(config.dashboardData);
   const [recentlyRead] = useFetch(config.recentReadEmails);
   const [recentlyUnread] = useFetch(config.recentUnreadEmails);
-  const [chartInfo] = useFetch(`${config.chart}?${link}`);
+  const [chartInfo] = useFetch(
+    `${config.chart}?${`start=${selectBox.start}&end=${selectBox.end}`}`
+  );
+
   mixpanel.track("Dashboard", {
     source: "A user navigated to Dashboard",
   });
+
   // if (isLoadingInfo || isLoadingRead || isLoadingUnread || isLoadingChart)
   //   return <Spinner />;
   return (
@@ -82,12 +86,16 @@ function Dashboard() {
             <Card className="card-chart">
               <CardHeader>
                 <CardTitle tag="h5">
-                  Emails Sent and Opened <DropDown />
+                  Emails Sent and Opened{" "}
+                  <DropDown setSelectBox={setSelectBox} selectBox={selectBox} />
                 </CardTitle>
               </CardHeader>
               <CardBody>
                 <Line
-                  data={dashboardNASDAQChart?.data}
+                  data={dashboardNASDAQChart?.data(
+                    selectBox.start,
+                    selectBox.end
+                  )}
                   options={dashboardNASDAQChart?.options}
                   width={400}
                   height={100}

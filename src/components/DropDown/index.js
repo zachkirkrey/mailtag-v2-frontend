@@ -4,12 +4,9 @@ import DropDownBtn from "./DropDownBtn";
 import DropDownContent from "./DropDownContent";
 import DropMe from "./DropMe";
 import selects from "../../utils/chartDtopDownData";
-const DropDown = () => {
+
+const DropDown = ({ setSelectBox, selectBox }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectBox, setSelectBox] = useState({
-    id: "select_range",
-    label: "Select Range",
-  });
   const handleChangeSelect = (item) => {
     setSelectBox(item);
   };

@@ -10,6 +10,7 @@ import {
   NavItem,
   Container,
 } from "reactstrap";
+import iconFeedBack from "../../assets/img/ic-feedback.svg";
 import routes from "routes";
 import ReactTooltip from "react-tooltip";
 import CheckList from "components/CicleProgressBar/CheckList";
@@ -106,6 +107,7 @@ function Header(props) {
             <NavItem>
               <ReactTooltip
                 clickable={true}
+                globalEventOff={"click"}
                 event="click"
                 place="bottom"
                 multiline={true}
@@ -121,18 +123,19 @@ function Header(props) {
                 data-tip
                 className="nav-link btn-magnify"
               >
-                <i
-                  className="nc-icon nc-spaceship"
-                  style={{ fontSize: "32px" }}
-                ></i>
+                <img
+                  src={iconFeedBack}
+                  alt="icon Feed Back"
+                  id="feedback-img"
+                ></img>
               </Link>
             </NavItem>
             <NavItem>
               <ReactTooltip
                 clickable={true}
                 event="click"
-                this
                 place="bottom"
+                globalEventOff={"click"}
                 multiline={true}
                 id={`progress_tooltip`}
                 type="light"
