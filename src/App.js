@@ -73,7 +73,6 @@ export default function App() {
       isMounted = false;
       controller.abort();
     };
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
