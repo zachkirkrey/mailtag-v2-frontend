@@ -15,19 +15,23 @@ import { SET_CURRENT_USER } from "redux/Auth/user.type";
 import useAxiosPrivate from "hooks/useAxiosPrivate";
 import config from "./config/config.json";
 import { REFRESH_TOKEN } from "constract/utilis";
+import GoogleSuccess from "views/GoggleSuccess";
+
 ReactGA.initialize("G-9JQYTKMY2Y");
 ReactGA.send("pageview");
+
 export default function App() {
   const dispatch = useDispatch();
   const axiosPrivate = useAxiosPrivate();
   const navigate = useHistory();
   const location = useLocation();
   const { setAuth } = useAuth();
+  
   useEffect(() => {
-    if (window.location.href.includes('google/success')) {
-      console.log(" here, closing windows ")
-      return window.close()
-    }
+    // if (window.location.href.includes('google/success')) {
+    //   console.log(" here, closing windows ")
+    //   return window.close()
+    // }
     let isMounted = true;
     const controller = new AbortController();
     const getToken = async () => {
@@ -84,6 +88,7 @@ export default function App() {
     <>
       <Route path="/login" component={Login} />
       <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+      <Route path="/google/success" component={GoogleSuccess}/>
       {/* <Redirect to="/admin/dashboard" /> */}
     </>
   );
